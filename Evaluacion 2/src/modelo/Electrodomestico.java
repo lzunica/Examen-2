@@ -2,54 +2,54 @@ package modelo;
 
 public class Electrodomestico {
 	
-	//Atributos de electrodomestico
-	private int precioBase;
+	/**Atributos de electrodomestico**/
+	protected int precioBase;
 	private String color;
 	private char consumoEnergetico;
 	private int peso;
-	//private Object Electrodomestico();
 	
-    //Constante de precio, color, consumo, peso
+    /**Constante de precio, color, consumo, peso**/
     protected final static int precioConst = 100000;
     protected final static String colorConst = "blanco";
     protected final static char consumoEnergeticoConst = 'F';
     protected final static int pesoConst = 5;
     
-	public Electrodomestico() {
-		super();
+    /** Constructor por defecto**/
+    public Electrodomestico() {
+    	this(precioConst, pesoConst, consumoEnergeticoConst, colorConst);
 		
 	}
 	
-	Electrodomestico(int precio, int peso) {
-		super();
-		this.peso = peso;
-		this.precioBase = precioBase;	
+    /**Constructor de parametro precioBase y peso**/
+    public Electrodomestico(int precioBase, int peso){
+        this(precioBase, peso, consumoEnergeticoConst, colorConst);
+    }
+   
+    /**Constructor de parametros precioBase, peso, consumoEnergetico, color**/
+    public Electrodomestico(int precioBase, int peso, char consumoEnergetico, String color){
+        this.precioBase=precioBase;
+        this.peso=peso;
+        ComprobarConsumoEnergetico(consumoEnergetico);
+        ComprobarColor(color);
 	}
-	
-	Electrodomestico(int precioBase, int peso, String color, char consumoEnergetico) {
-		this.precioBase = precioBase;
-		this.peso = peso;
-		this.color = color;
-		this.consumoEnergetico = consumoEnergetico;
-	}
-
+	/**Creamos metodo get de precioBase**/
 	public int getPrecioBase() {
 		return precioBase;
 	}
-
+	/**Creamos metodo get de color**/
 	public String getColor() {
 		return color;
 	}
-
+	/**Creamos metodo get de consumoEneregetico**/
 	public char getConsumoEnergetico() {
 		return consumoEnergetico;
 	}
-
+	/**Creamos metodo get de color**/
 	public int getPeso() {
 		return peso;
 
 	}	
-	//Metodo para escoger el consumo energetico
+	/**Metodo para escoger el consumo energetico**/
 	public void ComprobarConsumoEnergetico(char consumoEnergetico) {
 		 if(consumoEnergetico>=65 && consumoEnergetico<=70){
 	            this.consumoEnergetico=consumoEnergetico;
@@ -57,7 +57,7 @@ public class Electrodomestico {
 	            this.consumoEnergetico=consumoEnergeticoConst;
 	        }
 	}
-	//Metodo para escoger el color
+	/**Metodo para escoger el color que desea**/
 	public void ComprobarColor(String color) { 
 		if(color == "Negro" || color == "Azul"|| color == "Gris" || color == "Rojo") {
 		this.color = color;
@@ -65,8 +65,8 @@ public class Electrodomestico {
 				this.color = "Blanco";}
 		
 	}	
-	
-	public int PrecioFinal(int precioBase) {
+	/**Metodo para calcular precio final**/ 
+	public int PrecioFinal() {
 		int monto = 0;
 		if (consumoEnergetico=='A') {
             monto += 100;
@@ -96,7 +96,9 @@ public class Electrodomestico {
 	}
 	public void muestra() {
 	}
-}
+
+	}
+
 	
 
         
